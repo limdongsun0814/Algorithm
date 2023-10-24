@@ -1,4 +1,3 @@
-
 import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -57,19 +56,6 @@ public class Main {
 		}
 	}
 
-	static void make_graph() {
-		graph = new HashMap<String, ArrayList<String>>();
-		for (int i = 0; i < N; i++) {
-			for (int j = 0; j < M; j++) {
-				graph.put(i + "," + j, new ArrayList<String>());
-			}
-		}
-
-		for (int[] xy : line) {
-			graph.get(xy[0] + "," + xy[1]).add(xy[2] + "," + xy[3]);
-			graph.get(xy[2] + "," + xy[3]).add(xy[0] + "," + xy[1]);
-		}
-	}
 
 	static void find_v() {
 		v = new ArrayList<String>();
@@ -108,7 +94,6 @@ public class Main {
 				String val = q.poll();
 				y=Integer.parseInt(val.split(",")[0]);
 				x=Integer.parseInt(val.split(",")[1]);
-				ArrayList<String> flag = new ArrayList<String>();
 				if (y + 1 < N) {
 					if ( map[y + 1][x] == 0) {
 						buffer.add((y+1)+","+x);
@@ -133,14 +118,6 @@ public class Main {
 						map[y][x-1]=1;
 					}
 				}
-//				for (String nextVal : flag) {
-//					y = Integer.parseInt(nextVal.split(",")[0]);
-//					x = Integer.parseInt(nextVal.split(",")[1]);
-//					if (map[y][x]!=1) {
-//						buffer.add(nextVal);
-//						map[y][x]=1;
-//					}
-//				}
 			}
 			q.addAll(buffer);
 			result++;
