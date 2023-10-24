@@ -11,10 +11,7 @@ import java.util.Queue;
 
 public class Main {
 	static int[][] map;
-	static int N;
-	static int M;
-	static int x;
-	static int y;
+	static int N;	static int M;	static int x;	static int y;
 	static HashMap<String, ArrayList<String>> graph;
 	static BufferedReader br;
 	static ArrayList<int[]> line;
@@ -23,29 +20,12 @@ public class Main {
 	public static void main(String[] args) throws Exception {
 		br = new BufferedReader(new InputStreamReader(System.in));
 		String[] data = br.readLine().split(" ");
-		// 6 4
 		M = Integer.parseInt(data[0]);
 		N = Integer.parseInt(data[1]);
 		map = new int[N][M];
-
 		make_map();
-
-		//print_map();
-
-		//make_line();
-
-		//print_line();
-
-		//make_graph();
-
-		//print_graph();
-
 		find_v();
-		
-		//print_v();
-		
 		bfs();
-		
 		System.out.println(has_zero()?-1:result);
 	}
 
@@ -129,45 +109,42 @@ public class Main {
 				y=Integer.parseInt(val.split(",")[0]);
 				x=Integer.parseInt(val.split(",")[1]);
 				ArrayList<String> flag = new ArrayList<String>();
-
 				if (y + 1 < N) {
 					if ( map[y + 1][x] == 0) {
-						flag.add((y+1)+","+x);
+						buffer.add((y+1)+","+x);
+						map[y+1][x]=1;
 					}
 				}
-
 				if (x + 1 < M) {
 					if ( map[y][x + 1] ==0) {
-						flag.add(y+","+(x+1));
+						buffer.add(y+","+(x+1));
+						map[y][x+1]=1;
 					}
 				}
-				
 				if (y - 1 >= 0) {
 					if (map[y - 1][x] ==0) {
-						flag.add(y-1+","+x);
+						buffer.add(y-1+","+x);
+						map[y-1][x]=1;
 					}
 				}
-
 				if (x - 1 >= 0) {
 					if ( map[y][x - 1] == 0) {
-						flag.add(y+","+(x-1));
+						buffer.add(y+","+(x-1));
+						map[y][x-1]=1;
 					}
 				}
-				
-				
-				for (String nextVal : flag) {
-					y = Integer.parseInt(nextVal.split(",")[0]);
-					x = Integer.parseInt(nextVal.split(",")[1]);
-					if (map[y][x]!=1) {
-						buffer.add(nextVal);
-						map[y][x]=1;
-					}
-				}
+//				for (String nextVal : flag) {
+//					y = Integer.parseInt(nextVal.split(",")[0]);
+//					x = Integer.parseInt(nextVal.split(",")[1]);
+//					if (map[y][x]!=1) {
+//						buffer.add(nextVal);
+//						map[y][x]=1;
+//					}
+//				}
 			}
 			q.addAll(buffer);
 			result++;
 		}
-		
 	}
 
 	static void print_map() {
@@ -204,3 +181,4 @@ public class Main {
 	
 	
 }
+
