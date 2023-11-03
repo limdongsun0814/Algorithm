@@ -2,12 +2,12 @@ import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.HashMap;
+import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.Queue;
 
 public class Main {
-	static HashMap<Integer, Boolean> visit =  new HashMap<Integer, Boolean>();
+	static boolean visit[] = new boolean[200001];;
 	static int[] movement = new int[3];
 	static int N;
 	static int M;
@@ -26,7 +26,7 @@ public class Main {
 	static void bfs() {
 		Queue<String> q = new LinkedList<String>();
 		q.add(N+","+0);
-		visit.put(N, true);
+		visit[N]=true;
 		while(!q.isEmpty()) {
 			String[] data=q.poll().split(",");
 			int val =Integer.parseInt(data[0]);
@@ -39,9 +39,9 @@ public class Main {
 			for(int move:movement) {
 				int nextVal = move+val;
 				if(nextVal>=0&&nextVal<200001) {
-					if(visit.get(nextVal)==null) {
+					if(!visit[nextVal]) {
 						q.add(nextVal+","+(cnt+1));
-						visit.put(nextVal, true);
+						visit[nextVal]=true;
 					}
 				}
 			}
