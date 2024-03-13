@@ -11,21 +11,41 @@ def dfs(value):
             flag = True
             visit[i]=True
             dfs(i)
+
+def bfs(value):
+    global visit, flag, stack
+
+    for i in range(len(g[value])):
+        if g[value][i] == 1 and visit[i] == False:
+            stack.append(i)
+            flag = True
+            visit[i]=True
+
+    if len(stack) > 0:
+        bfs(stack.pop())
             
 def solution(n, computers):
-    global g,visit, cnt, flag
+    global g,visit, cnt, flag, stack
     g = {}
     visit = []
     cnt = 0
+    stack = []
+
     for i in range(n):
         g[i]=[]
         visit.append(False)
 
     makeG(computers)
 
+    switch = True
+
     for i in range(n):
         flag = False
-        dfs(i)
+        if switch:
+            dfs(i)
+        else:
+            stack.append(i)
+            bfs(i)
         if flag:
             cnt+=1
     answer = cnt
