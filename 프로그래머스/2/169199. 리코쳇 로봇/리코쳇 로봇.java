@@ -1,7 +1,7 @@
 import java.util.*;
 class Solution {
     public int solution(String[] board) {
-                int answer = -1;
+        int answer = -1;
         int r = board.length; 
         int c = board[0].length();
         int[] start = new int[2];
@@ -46,16 +46,7 @@ class Solution {
                 	newR +=moveR[i];
                 	newC +=moveC[i];
                 	
-                	if(newR <0 || newC <0 || newR >=r || newC >= c) {
-                		newR -=moveR[i];
-                    	newC -=moveC[i];
-                		if(!visited[newR][newC]) {
-	                		visited[newR][newC] = true;
-	                		q.offer(new Integer[] {newR, newC, curCnt+1});
-                		}
-                		break;
-                	}
-                	if(board[newR].charAt(newC)=='D' && !visited[newR][newC]) {
+                	if((newR <0 || newC <0 || newR >=r || newC >= c) || board[newR].charAt(newC)=='D') {
                     	newR -=moveR[i];
                     	newC -=moveC[i];
                 		if(!visited[newR][newC]) {
