@@ -1,7 +1,7 @@
 import java.util.*;
 class Solution {
     public int solution(String[] board) {
-        int answer = -1;
+                int answer = -1;
         int r = board.length; 
         int c = board[0].length();
         int[] start = new int[2];
@@ -38,28 +38,32 @@ class Solution {
             
             
             for(int i =0; i<4; i++) {
-                int newR = curR+moveR[i];
-                int newC = curC+moveC[i];
+                int newR = curR;
+                int newC = curC;
                
                 while(true) {
-                    if(newR >= 0 && newR < r && newC >=0 && newC < c) {
-                        if(board[newR].charAt(newC) == 'D' ) {
-                        	if(!visited[newR-moveR[i]][newC-moveC[i]]) {
-	                            q.offer(new Integer[] {newR-moveR[i], newC-moveC[i], curCnt+1});
-	                            visited[newR-moveR[i]][newC-moveC[i]] = true;
-                        	}
-                            break;
-                        } else if (((newR ==0 && i == 0) || (newR == r-1 && i == 1) || (newC == 0 && i == 2) || (newC == c-1 && i == 3)) && !visited[newR][newC]) {
-                    		q.offer(new Integer[] {newR, newC, curCnt+1});
-                            visited[newR][newC] = true;
-                            break;
-                        } else {
-                            newR += moveR[i];
-                            newC += moveC[i];
-                        }
-                    } else {
-                        break;
-                    }
+
+                	newR +=moveR[i];
+                	newC +=moveC[i];
+                	
+                	if(newR <0 || newC <0 || newR >=r || newC >= c) {
+                		newR -=moveR[i];
+                    	newC -=moveC[i];
+                		if(!visited[newR][newC]) {
+	                		visited[newR][newC] = true;
+	                		q.offer(new Integer[] {newR, newC, curCnt+1});
+                		}
+                		break;
+                	}
+                	if(board[newR].charAt(newC)=='D' && !visited[newR][newC]) {
+                    	newR -=moveR[i];
+                    	newC -=moveC[i];
+                		if(!visited[newR][newC]) {
+	                		visited[newR][newC] = true;
+	                		q.offer(new Integer[] {newR, newC, curCnt+1});
+                		}
+                		break;
+                	}
                 }
             }
         }
