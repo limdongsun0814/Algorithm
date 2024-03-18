@@ -25,15 +25,6 @@ def bfs(board,start):
             while True:
                 nextPos[0]+=move[0]
                 nextPos[1]+=move[1]
-
-                # if nextPos[0]<0 or nextPos[1]<0 or nextPos[0]>=maxX or nextPos[1]>=maxY:
-                #     nextPos[0] -= move[0]
-                #     nextPos[1] -= move[1]
-                #     if visit[nextPos[0]][nextPos[1]]:
-                #         visit[nextPos[0]][nextPos[1]] = False
-                #         stack.append([nextPos[0], nextPos[1], value[2] + 1])
-                #     break
-
                 if (nextPos[0]<0 or nextPos[1]<0 or nextPos[0]>=maxX or nextPos[1]>=maxY) or board[nextPos[0]][nextPos[1]]=='D':
                     nextPos[0] -= move[0]
                     nextPos[1] -= move[1]
