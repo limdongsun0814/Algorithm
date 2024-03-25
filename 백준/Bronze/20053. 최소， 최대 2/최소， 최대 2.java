@@ -1,3 +1,4 @@
+
 import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -14,6 +15,7 @@ public class Main {
 			PriorityQueue<Integer> minValue = new PriorityQueue<>();
 			PriorityQueue<Integer> maxValue = new PriorityQueue<>((o1, o2) -> o2-o1);
 			String[] data = br.readLine().split(" ");
+			
 			for(String i: data) {
 				minValue.add(Integer.parseInt(i));
 				maxValue.add(Integer.parseInt(i));
