@@ -7,7 +7,7 @@ d = deque()
 n = int(input())
 cnt=0
 for i in range(n):
-    check = sys.stdin.readline().rstrip().split()
+    check = sys.stdin.readline().split()
     if check[0]=="push_back":
         value=check[1]
         cnt+=1
