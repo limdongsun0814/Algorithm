@@ -1,3 +1,4 @@
+# 돌리는 맛이 있는 문제
 def solution(rows, columns, queries):
     answer = []
     arr=[]
