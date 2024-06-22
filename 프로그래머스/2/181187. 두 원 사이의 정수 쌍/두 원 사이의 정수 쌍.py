@@ -1,3 +1,4 @@
+# 어렵기 보다는 시작을 잘못 잡아 시간이 오래걸린 문제
 def solution(r1, r2):
     answer = 0
     for x in range(r2+1):
