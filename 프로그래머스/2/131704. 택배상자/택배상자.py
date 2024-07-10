@@ -1,7 +1,6 @@
-import collections
 def solution(order):
     answer = 0
-    stack = collections.deque()
+    stack = []
     arr = [ i for i in range(len(order),0,-1)]
     
     while len(arr)>0 or len(stack)>0:
