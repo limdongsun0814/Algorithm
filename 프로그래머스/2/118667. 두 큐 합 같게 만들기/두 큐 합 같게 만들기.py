@@ -20,7 +20,7 @@ def solution(queue1, queue2):
             arr1.append(val)
             queVal1+=val
         answer+=1
-        if answer>n+n:
+        if answer>n*2:
             answer=-1
             break
             
