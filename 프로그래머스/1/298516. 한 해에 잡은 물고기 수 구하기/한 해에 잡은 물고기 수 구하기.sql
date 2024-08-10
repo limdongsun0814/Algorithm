@@ -1,0 +1,1 @@
+select count(*) FISH_COUNT from fish_info where Date_format(TIME,"%Y") = "2021"
