@@ -6,4 +6,4 @@ when STATUS="DONE" then "거래완료"
 end
 from USED_GOODS_BOARD 
 where CREATED_DATE="2022-10-05"
-order by BOARD_ID desc
+order by BOARD_ID desc 
