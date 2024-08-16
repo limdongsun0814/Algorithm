@@ -1,0 +1,9 @@
+select APNT_NO,PT_NAME,PT_NO,APPOINTMENT.MCDP_CD,DR_NAME,
+APNT_YMD
+-- date_format(APNT_YMD,"%Y-%m-%d %H:%i:%s.%f") APNT_YMD
+from APPOINTMENT join PATIENT using(PT_NO) 
+join DOCTOR on (DOCTOR.DR_ID=APPOINTMENT.MDDR_ID)
+where APNT_YMD like("2022-04-13%") 
+and APPOINTMENT.MCDP_CD="CS" 
+and APNT_CNCL_YN="N"
+order by APNT_YMD ASC
